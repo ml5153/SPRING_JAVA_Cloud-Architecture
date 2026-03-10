@@ -18,6 +18,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiResponse<Void>> handleValidError(MethodArgumentNotValidException e) {
         String errorMessage = e.getBindingResult().getAllErrors().get(0).getDefaultMessage();
+        log.warn("[VALIDATION_ERROR] {}", errorMessage);
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(ApiResponse.fail(
@@ -32,6 +33,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(CommonException.class)
     public ResponseEntity<ApiResponse<Void>> handleException(CommonException e) {
         CommonError errorCode = e.getCommonError();
+        log.warn("[COMMON_ERROR] 코드: {}, 메시지: {}", errorCode.getCode(), errorCode.getMessage());
         return ResponseEntity.status(errorCode.getStatus())
                 .body(ApiResponse.fail(errorCode));
     }
@@ -41,7 +43,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiResponse<Void>> handleException(Exception e) {
-        log.error("Unexpected exception",e);
+        log.error("[SYSTEM_ERROR] 예상치 못한 예외 발생", e);
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(ApiResponse.fail(CommonError.INTERNAL_SERVER_ERROR));
