@@ -29,12 +29,12 @@ public class MemberController {
                 );
     }
 
-    @GetMapping()
+    @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<MemberResponse>> findById(
-            @Valid @RequestParam Long id
+            @PathVariable Long id
     ) {
         return ResponseEntity
-                .status(HttpStatus.CREATED)
+                .status(HttpStatus.OK)
                 .body(ApiResponse.success(memberService.findById(id))
                 );
     }
