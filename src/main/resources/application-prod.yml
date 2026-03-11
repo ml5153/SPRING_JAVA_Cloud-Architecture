@@ -1,6 +1,6 @@
 spring:
-  config:
-    import: "aws-parameterstore:/cloud-app/prod/"
+#  config:
+#    import: "aws-parameterstore:/cloud-project-app/prod/"
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://your-rds-endpoint:3306/yourdb
