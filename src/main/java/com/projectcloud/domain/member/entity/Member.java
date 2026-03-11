@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Entity
-@Table(name = "users")
+@Table(name = "members")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends BaseEntity {
 
@@ -22,18 +22,11 @@ public class Member extends BaseEntity {
     @Column(nullable = false, length = 50)
     private String name;
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false)
     private int age;
 
     @Column(nullable = false, length = 30)
     private String mbti;
-
-
-    @Column
-    private LocalDateTime approvedAt;
-
-    @Column
-    private LocalDateTime rejectedAt;
 
     public Member(String name, int age, String mbti) {
         this.name = name;

@@ -1,14 +1,17 @@
 spring:
-#  config:
-#    import: "aws-parameterstore:/cloud-project-app/prod/"
+  config:
+    import: "aws-parameterstore:/cloud-project-app/prod/"
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://your-rds-endpoint:3306/yourdb
+    url: ${DB_URL}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
 
 management:
   endpoint:
@@ -17,11 +20,7 @@ management:
   info:
     env:
       enabled: true
-
-info:
-  app:
-    message: ${APP_MESSAGE}
-
 logging:
   level:
     root: INFO
+

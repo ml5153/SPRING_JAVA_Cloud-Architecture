@@ -21,7 +21,4 @@ public abstract class BaseEntity {
     @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime modifiedAt;
-
-    @Column(nullable = false)
-    private boolean deleted = false;
 }
