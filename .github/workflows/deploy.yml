@@ -26,8 +26,11 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push Docker image
-        run: | # 박스를 만들고 창고(Docker Hub)에 보낸다
-          docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/project-cloud .
+        run: |
+          # 1. 이전 빌드 기록 무시하고(no-cache) 확실하게 amd64 규격으로 빌드
+          docker build --no-cache --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/project-cloud .
+          
+          # 2. 도커 허브에 덮어쓰기
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/project-cloud
 
       - name: EC2 Deploy
