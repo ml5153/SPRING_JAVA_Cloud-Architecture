@@ -27,7 +27,7 @@ jobs:
 
       - name: Build and push Docker image
         run: | # 박스를 만들고 창고(Docker Hub)에 보낸다
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/project-cloud .
+          docker build --platform linux/amd64 -t ${{ secrets.DOCKERHUB_USERNAME }}/project-cloud .
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/project-cloud
 
       - name: EC2 Deploy
