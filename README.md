@@ -52,7 +52,7 @@
 ## 🛠 트러블 슈팅 (Troubleshooting)
 
 ### 🚨 Issue 1: 로컬-서버 간 CPU 아키텍처 불일치 (`exec format error`)
-- **현상:** 로컬(M1 Mac)에서 빌드한 Docker 이미지가 EC2에서 실행되지 않고 즉시 종료됨.
+- **현상:** 로컬(M4 Mac)에서 빌드한 Docker 이미지가 EC2에서 실행되지 않고 즉시 종료됨.
 - **원인:** 로컬과 서버의 CPU 아키텍처가 달라 발생한 호환성 문제.
 - **해결:** GitHub Actions 워크플로우에 `docker/setup-qemu-action`과 `docker/setup-buildx-action`을 추가하여 **Multi-platform 빌드** 환경 구축.
 
