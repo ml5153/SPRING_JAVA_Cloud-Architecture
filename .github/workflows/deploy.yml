@@ -33,7 +33,7 @@ jobs:
         with:
           context: .
           push: true
-          platforms: linux/amd64 # <--- 서버 규격 명시
+          platforms: linux/amd64,linux/arm64 # <--- 서버 규격 명시
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/project-cloud:latest
 
       - name: EC2 Deploy
