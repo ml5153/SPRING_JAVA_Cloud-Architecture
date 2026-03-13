@@ -20,15 +20,30 @@ spring:
         static: ap-northeast-2
 
 
+#management:
+#  endpoint:
+#    health:
+#      show-details: never
+#  info:
+#    env:
+#      enabled: true
+#info:
+#  team-name: ${team-name:Default-Team}
 management:
-  endpoint:
-    health:
-      show-details: never
+  endpoints:
+    web:
+      exposure:
+        include: health,info
   info:
     env:
       enabled: true
+
 info:
   team-name: ${team-name:Default-Team}
+  app:
+    name: "project-cloud"
+    description: "spring boot aws practice"
+    version: "0.0.1-SNAPSHOT"
 logging:
   level:
     root: INFO
