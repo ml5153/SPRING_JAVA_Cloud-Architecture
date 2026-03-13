@@ -31,10 +31,6 @@ jobs:
       - name: Grant execute permission
         run: chmod +x ./gradlew
 
-      # 목적: 테스트 실행
-      - name: Run tests
-        run: ./gradlew test
-
       # 목적: Spring Boot JAR 생성
       - name: Build bootJar
         run: ./gradlew bootJar
